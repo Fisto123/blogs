@@ -1,0 +1,36 @@
+<div class="py-12 container px-12 mx-auto h-auto">
+  <p class="text-black text-2xl font-bold border-b border-gray-300 py-5">
+    SPORT NEWS
+  </p>
+  <div *ngIf="loadingSport">
+    <mat-spinner class="text-center" [diameter]="50"></mat-spinner>
+  </div>
+  <div *ngIf="errorSport">
+    {{ errorSport }}
+  </div>
+  <div class="grid lg:grid-cols-3 gap-5 md:grid-cols-2 sm:grid-cols-1 py-4">
+    <div class="shadow-xl h-[120px]" *ngFor="let item of sportNews">
+      <div class="flex p-4 cursor-pointer" (click)="nav(item._id)">
+        <img
+          [src]="item.images[0] || 'assets/default.jpg'"
+          alt=""
+          width="100px"
+          style="max-height: 50px"
+          class="h-full"
+        />
+        <p
+          class="m-2 text-xl text-gray-400 font-bold h-full px-3 hover:text-pink-500"
+        >
+          {{ item.title.slice(0, 70) }}....
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="mx-auto items-center text-center pb-10">
+    <button
+      class="bg-orange-500 rounded-lg p-5 px-10 text-white font-bold hover:bg-orange-200"
+    >
+      MORE
+    </button>
+  </div>
+</div>

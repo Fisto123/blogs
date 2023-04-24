@@ -1,0 +1,105 @@
+<div class="px-12 mx-auto my-5 h-auto">
+  <div class="w-full h-full">
+    <div class="flex justify-between text-white sm:flex-col lg:flex-row h-full">
+      <div class="bg-slate-50 lg:w-[30%] h-full md:w-full relative">
+        <p class="font-bold text-4xl px-3 text-purple-500">
+          {{ category }}
+        </p>
+        <div *ngIf="loading">
+          <mat-spinner
+            class="text-center"
+            [diameter]="50"
+            class="absolute left-[100%]"
+          >
+          </mat-spinner>
+        </div>
+        <div *ngIf="error">
+          {{ error }}
+        </div>
+        <div
+          class="border-b border-b-gray p-2"
+          *ngFor="let item of catNews | slice : 0 : 5"
+        >
+          <p class="text-red-700 px-3 font-bold">
+            {{ item.createdAt | date : "shortTime" }}
+          </p>
+          <p
+            class="md:text-xl md:p-3 font-semibold cursor-pointer"
+            (click)="nav(item._id)"
+          >
+            {{ item.title }}
+          </p>
+        </div>
+      </div>
+      <div
+        class="lg:w-[40%] h-1/2 md:w-full bg-slate-200"
+        *ngFor="let item of catNews | slice : 0 : 1"
+        (click)="nav(item._id)"
+      >
+        <img
+          [src]="item.images[0] || 'assets/default.jpg'"
+          class="h-full w-full"
+          alt=""
+        />
+        <p class="text-3xl p-2 font-bold">{{ item.title }}</p>
+        <p class="p-2 text-blue-400 font-bold">
+          {{ item.createdAt | date : "shortTime" }}
+        </p>
+      </div>
+      <div class="bg-slate-50 lg:w-[30%] h-full md:w-full">
+        <div
+          class="border-b border-b-gray p-2"
+          *ngFor="let item of catNews | slice : 5 : 10"
+        >
+          <div class="flex">
+            <h6 class="text-red-500 px-3 font-semi-bold">
+              {{ item.createdAt | date : "shortTime" }}
+            </h6>
+            <p class="p-1 bg-blue-500 text-center text-white rounded-lg">
+              {{ item?.categories }}
+            </p>
+          </div>
+          <p
+            (click)="nav(item._id)"
+            class="md:text-xl md:p-3 font-semibold cursor-pointer"
+          >
+            {{ item.title }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="py-15">
+    <p class="text-center text-3xl font-bold text-purple-600 underline">
+      MORE NEWS
+    </p>
+    <div *ngIf="loading">
+      <mat-spinner class="text-center" [diameter]="50" class="absolute">
+      </mat-spinner>
+    </div>
+    <div *ngIf="error">
+      {{ error }}
+    </div>
+    <div
+      class="shadow-lg md:w-2/3 sm:w-full mx-auto h-[25vh] p-4 flex relative"
+      *ngFor="let item of catNews | slice : 10"
+      (click)="nav(item._id)"
+    >
+      <div class="flex flex-col">
+        <h3 class="text-2xl font-bold text-black cursor-pointer">
+          {{ item.title }}
+        </h3>
+        <p class="py-2 sm:text-xl md:text-2xl text-black cursor-pointer">
+          {{ item.details.slice(0, 204) }}....
+        </p>
+        <p class="text-red-700 font-bold absolute bottom-0">
+          {{ item.createdAt | date : "short" }}
+        </p>
+      </div>
+      <div>
+        <img [src]="item.images[0]" alt="" class="h-1/2 w-full" />
+      </div>
+    </div>
+  </div>
+</div>
+<hin-footer></hin-footer>

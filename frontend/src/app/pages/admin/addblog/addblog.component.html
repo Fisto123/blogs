@@ -1,0 +1,184 @@
+<h2
+  class="text-blue-500 py-5 text-center font-extrabold text-3xl cursor-pointer"
+  routerLink="/admin"
+>
+  GO BACK TO ADMIN HOME
+</h2>
+<div class="h-[120vh]">
+  <div class="md:w-[70%] sm:w-[100%] mx-auto">
+    <form
+      [formGroup]="myForm"
+      (ngSubmit)="submitForm(myForm.value)"
+      novalidate
+      class="items-center md:w-2/3 h-auto bg-slate-200 mx-auto mt-10 sm:w-full rounded-lg"
+    >
+      <div class="mx-auto text-center py-5">
+        <mat-form-field appearance="fill" class="w-2/3 h-[90px]">
+          <mat-label>Blogs Title</mat-label>
+          <input
+            formControlName="title"
+            matInput
+            placeholder="Messi wins worldcup"
+          />
+        </mat-form-field>
+      </div>
+      <div
+        *ngIf="fc['title'].touched && fc['title'].invalid"
+        class="text-red-500"
+      >
+        <div
+          *ngIf="fc['title'].errors && fc['title'].errors['required']"
+          class="mx-auto items-center text-center"
+        >
+          <h3 class="font-bold text-center text-red-400">
+            TITLE IS REQUIRED***
+          </h3>
+        </div>
+      </div>
+
+      <div
+        *ngIf="fc['title'].errors && fc['title'].errors['minlength']"
+        class="font-bold text-center text-red-400"
+      >
+        Title must not be less twenty*****
+      </div>
+      <div
+        *ngIf="fc['title'].errors && fc['title'].errors['maxlength']"
+        class="font-bold text-center text-red-400"
+      >
+        Title must not be greater than 120***
+      </div>
+      <div class="mx-auto text-center py-2">
+        <mat-form-field appearance="fill" class="w-2/3 h-[220px]">
+          <mat-label>Blogs Description</mat-label>
+          <textarea
+            formControlName="details"
+            matInput
+            placeholder="Write the details of the blog"
+          ></textarea>
+        </mat-form-field>
+      </div>
+      <div
+        *ngIf="fc['details'].touched && fc['details'].invalid"
+        class="text-red-500"
+      >
+        <div
+          *ngIf="fc['details'].errors && fc['details'].errors['required']"
+          class="mx-auto items-center text-center"
+        >
+          <h3 class="font-bold text-center text-red-400">
+            DETAILS ARE REQUIRED***
+          </h3>
+        </div>
+      </div>
+      <div class="mx-auto text-center py-2">
+        <mat-form-field appearance="fill" class="w-2/3">
+          <mat-label>categories</mat-label>
+          <select matNativeControl required formControlName="categories">
+            <option value="nil" selected disabled>choose one</option>
+            <option value="2023 Elections" class="font-bold">
+              2023 Elections
+            </option>
+            <option value="Politics" class="font-bold">Politics</option>
+            <option value="Business" class="font-bold">Business</option>
+            <option value="Healthwise" class="font-bold">Healthwise</option>
+            <option value="Tech" class="font-bold">Tech</option>
+            <option value="Entertainement" class="font-bold">
+              Entertainement
+            </option>
+          </select>
+        </mat-form-field>
+      </div>
+      <div
+        *ngIf="fc['categories'].touched && fc['categories'].invalid"
+        class="text-red-500"
+      >
+        <div
+          *ngIf="fc['categories'].errors && fc['categories'].errors['required']"
+          class="mx-auto items-center text-center"
+        >
+          <h3 class="font-bold text-center text-red-400">
+            CATEGORY IS REQUIRED***
+          </h3>
+        </div>
+      </div>
+      <div class="mx-auto text-center py-2">
+        <mat-form-field appearance="fill" class="w-2/3">
+          <mat-label>Trending</mat-label>
+          <select matNativeControl required formControlName="trending">
+            <option value="nil" selected disabled>choose one</option>
+            <option value="true" class="font-bold">true</option>
+            <option value="false" class="font-bold">false</option>
+          </select>
+        </mat-form-field>
+      </div>
+      <div
+        *ngIf="fc['trending'].touched && fc['trending'].invalid"
+        class="text-red-500"
+      >
+        <div
+          *ngIf="fc['trending'].errors && fc['trending'].errors['required']"
+          class="mx-auto items-center text-center"
+        >
+          <h3 class="font-bold text-center text-red-400">
+            FIELD IS REQUIRED***
+          </h3>
+        </div>
+      </div>
+      <div class="mx-auto text-center py-2">
+        <mat-form-field appearance="fill" class="w-2/3">
+          <mat-label>Cover News</mat-label>
+          <select matNativeControl required formControlName="cover">
+            <option value="nil" selected disabled>choose one</option>
+            <option value="true" class="font-bold">true</option>
+            <option value="false" class="font-bold">false</option>
+          </select>
+        </mat-form-field>
+      </div>
+      <div
+        *ngIf="fc['cover'].touched && fc['cover'].invalid"
+        class="text-red-500"
+      >
+        <div
+          *ngIf="fc['cover'].errors && fc['cover'].errors['required']"
+          class="mx-auto items-center text-center"
+        >
+          <h3 class="font-bold text-center text-red-400">
+            FIELD IS REQUIRED***
+          </h3>
+        </div>
+      </div>
+      <div class="mx-auto text-center py-5">
+        <mat-form-field appearance="fill" class="w-2/3 h-[90px]">
+          <mat-label>Blogs Image Url</mat-label>
+          <input
+            formControlName="images"
+            matInput
+            placeholder="Post image URL"
+          />
+        </mat-form-field>
+      </div>
+      <div
+        *ngIf="fc['images'].touched && fc['images'].invalid"
+        class="text-red-500"
+      >
+        <div
+          *ngIf="fc['images'].errors && fc['images'].errors['required']"
+          class="mx-auto items-center text-center"
+        >
+          <h3 class="font-bold text-center text-red-400">
+            Image URL IS REQUIRED***
+          </h3>
+        </div>
+      </div>
+      <div class="w-1/2 mx-auto pb-7">
+        <button
+          [disabled]="myForm.invalid"
+          class="bg-blue-600 text-white w-full rounded-lg p-6"
+        >
+          ADD POST
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

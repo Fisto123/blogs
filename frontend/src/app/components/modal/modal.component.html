@@ -1,0 +1,71 @@
+<form
+  action=""
+  [formGroup]="updateForm"
+  (ngSubmit)="updateUser(updateForm.value)"
+  style="text-align: center; padding: 10px"
+>
+  <mat-form-field appearance="fill">
+    <mat-label>UserId</mat-label>
+    <input value="{{ userForm._id }}" matInput disabled />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>name</mat-label>
+    <input matInput formControlName="name" [(ngModel)]="userForm.name" />
+  </mat-form-field>
+
+  <div *ngIf="fc['name'].touched && fc['name'].invalid" class="text-red-500">
+    <div
+      *ngIf="fc['name'].errors && fc['name'].errors['required']"
+      class="mx-auto items-center text-center"
+    >
+      <h5 class="font-bold text-center text-red-400">name is required***</h5>
+    </div>
+  </div>
+  <mat-form-field appearance="fill">
+    <mat-label>email</mat-label>
+    <input disabled value="{{ userForm.email }}" matInput />
+  </mat-form-field>
+  <div class="text-red-500 font-bold">Contact superadmin to change email**</div>
+  <mat-form-field appearance="fill">
+    <mat-label>Admin status</mat-label>
+    <select
+      formControlName="isAdmin"
+      matNativeControl
+      required
+      [(ngModel)]="userForm.isAdmin"
+    >
+      <option value="true">Admin</option>
+      <option value="false">User</option>
+    </select>
+  </mat-form-field>
+  <div
+    *ngIf="fc['isAdmin'].touched && fc['isAdmin'].invalid"
+    class="text-red-500"
+  >
+    <div
+      *ngIf="fc['isAdmin'].errors && fc['isAdmin'].errors['required']"
+      class="mx-auto items-center text-center"
+    >
+      <h5 class="font-bold text-center text-red-400">role is required***</h5>
+    </div>
+  </div>
+
+  <div>
+    <button
+      class="bg-blue-600 p-3 rounded-md text-white"
+      mat-raised-button
+      color="primary"
+      style="margin-right: 5px"
+    >
+      Update
+    </button>
+    <button
+      class="bg-red-600 p-3 rounded-full text-white"
+      mat-raised-button
+      color="primary"
+      (click)="onClose()"
+    >
+      Close
+    </button>
+  </div>
+</form>

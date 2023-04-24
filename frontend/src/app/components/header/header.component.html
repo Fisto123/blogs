@@ -1,0 +1,38 @@
+<div class="bg-black h-24 items-center flex justify-between sticky top-0 z-10">
+  <div class="container mx-auto px-4 flex justify-between">
+    <div class="hidden md:flex gap-2">
+      <img src="assets/inst.jpeg" class="rounded-full" alt="" width="40px" />
+      <img src="assets/twit.png" class="rounded-full" alt="" width="40px" />
+      <img src="assets/link.png" class="rounded-full" alt="" width="40px" />
+      <img src="assets/tik.jpeg" class="rounded-full" alt="" width="40px" />
+      <img src="assets/fb.jpeg" class="rounded-full" alt="" width="40px" />
+    </div>
+    <div class="items-center mt-5">
+      <p
+        class="text-white items-center text-2xl font-extrabold mt- cursor-pointer hover:text-pink-500"
+        routerLink="/"
+      >
+        BLOGZZZ
+      </p>
+    </div>
+    <div class="flex justify-between">
+      <div class="items-center mt-0">
+        <button
+          class="bg-red-600 p-4 w-full px-16 rounded-lg ml-4 font-bold text-white mt-2"
+        >
+          Videos
+        </button>
+      </div>
+      <button
+        *ngIf="isUserAdmin"
+        routerLink="admin"
+        class="text-black ml-5 bg-white text-sm rounded-lg px-4"
+      >
+        ADMIN
+      </button>
+      <button class="bg-white text-black p-3 ml-5" (click)="logout()">
+        LOGOUT
+      </button>
+    </div>
+  </div>
+</div>

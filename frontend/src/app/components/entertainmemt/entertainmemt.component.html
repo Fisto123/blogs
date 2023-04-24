@@ -1,0 +1,51 @@
+<div class="text-black h-auto container mx-auto py-10">
+  <p class="font-bold text-2xl border-b border-b-gray-300 pb-6">
+    Entertainement
+  </p>
+  <div *ngIf="loadingEntertainment">
+    <mat-spinner class="text-center" [diameter]="50"></mat-spinner>
+  </div>
+  <div *ngIf="errorEntertainment">
+    {{ errorEntertainment }}
+  </div>
+  <div class="flex justify-between py-5 md:flex-row sm:flex-col gap-3">
+    <div
+      class="lg:w-[30%] sm:w-full cursor-pointer"
+      *ngFor="let item of EntertainementNews | slice : 0 : 1"
+      (click)="nav(item._id)"
+    >
+      <img [src]="item.images[0]" alt="" />
+      <p
+        class="text-3xl font-bold mx-auto text-center py-4 hover:text-pink-500"
+      >
+        {{ item.title }}
+      </p>
+      <p class="text-xl text-gray-500 py-2 font-bold">
+        {{ item.details.slice(0, 150) }}.....
+      </p>
+    </div>
+
+    <div class="md:w-[70%] text-black-700 sm:w-full">
+      <div class="grid lg:grid-cols-2 mx-auto text-center p-2">
+        <div
+          class="flex gap-2 p-2 cursor-pointer"
+          *ngFor="let item of EntertainementNews"
+          (click)="nav(item._id)"
+        >
+          <img
+            [src]="item.images[0] || 'assets/default.jpg'"
+            width="100px"
+            height="20px"
+            alt=""
+            class="h-1/2"
+          />
+          <h2
+            class="font-semibold text-xl text-start text-gray-600 border-b border-b-gray-200 pb-4 hover:text-pink-500"
+          >
+            {{ item.title }}
+          </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,80 @@
+<div style="width: 800px; margin: auto; padding-top: 10px">
+  <h2
+    class="text-blue-500 py-5 text-center font-extrabold text-3xl cursor-pointer"
+    routerLink="/admin"
+  >
+    GO BACK TO ADMIN HOME
+  </h2>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>UserId</th>
+      <td mat-cell *matCellDef="let element" class="text-xl font-bold">
+        {{ element._id }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Username</th>
+      <td mat-cell *matCellDef="let element" class="text-xl font-bold">
+        {{ element.name }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef>email</th>
+      <td mat-cell *matCellDef="let element" class="text-xl font-bold">
+        {{ element.email }}
+      </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="admin">
+      <th mat-header-cell *matHeaderCellDef>role</th>
+      <td mat-cell *matCellDef="let element" class="text-xl font-bold">
+        {{ element.isAdmin ? "admin" : "user" }}
+      </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef>actions</th>
+      <td
+        mat-cell
+        *matCellDef="let element"
+        style="display: flex; padding: 6px"
+      >
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="update(element._id)"
+          class="bg-blue-400 p-4 rounded-md"
+        >
+          Change
+        </button>
+        <button
+          mat-raised-button
+          color="accent"
+          style="margin-left: 7px"
+          (click)="delete(element._id)"
+          class="bg-red-400 p-4 rounded-md"
+        >
+          Delete
+        </button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+  <mat-paginator
+    style="margin-top: 6px"
+    [length]="100"
+    [pageSize]="10"
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    aria-label="Select page"
+  >
+  </mat-paginator>
+</div>

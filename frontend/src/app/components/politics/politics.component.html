@@ -1,0 +1,49 @@
+<div class="text-black h-auto container mx-auto">
+  <p class="font-bold text-2xl border-b border-b-gray-300 pb-6">Politics</p>
+  <div *ngIf="loadingPolitics">
+    <mat-spinner class="text-center" [diameter]="50"></mat-spinner>
+  </div>
+  <div *ngIf="errorPolitics">
+    {{ errorPolitics }}
+  </div>
+
+  <div class="flex justify-between py-5 md:flex-row sm:flex-col gap-3">
+    <div
+      class="lg:w-[30%] sm:w-full cursor-pointer"
+      *ngFor="let item of politicsNews | slice : 0 : 1"
+      (click)="nav(item._id)"
+    >
+      <img [src]="item.images[0] || 'assets/default.jpg'" alt="" />
+      <p
+        class="text-2xl font-bold mx-auto text-center py-4 hover:text-pink-500"
+      >
+        {{ item.title }}
+      </p>
+      <p class="text-xl text-gray-500 py-2 font-bold">
+        {{ item.details.slice(0, 150) }}.......
+      </p>
+    </div>
+
+    <div class="md:w-[70%] text-black-700 sm:w-full">
+      <div class="grid lg:grid-cols-2 mx-auto text-center p-2">
+        <div
+          class="flex gap-2 p-2 cursor-pointer"
+          *ngFor="let item of politicsNews"
+        >
+          <img
+            [src]="item.images[0] || 'assets/default.jpg'"
+            width="100px"
+            height="20px"
+            class="h-1/2"
+            alt=""
+          />
+          <p
+            class="font-semibold text-xl text-start text-gray-600 border-b border-b-gray-200 pb-4 hover:text-pink-500"
+          >
+            {{ item.title }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
