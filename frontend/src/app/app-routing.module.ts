@@ -10,6 +10,7 @@ import { AdminhomeComponent } from './pages/admin/adminhome/adminhome.component'
 import { AddblogComponent } from './pages/admin/addblog/addblog.component';
 import { ViewusersComponent } from './pages/admin/viewusers/viewusers.component';
 import { SinglecategoryComponent } from './pages/singlecategory/singlecategory.component';
+import { NotfoundComponent } from './pages/notfound/notfound.component';
 
 const routes: Routes = [
   {
@@ -55,10 +56,14 @@ const routes: Routes = [
     path: 'singlecat/:cat',
     component: SinglecategoryComponent,
   },
+  {
+    path: '**',
+    component: NotfoundComponent,
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true })],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

@@ -22,6 +22,7 @@ import { AdminModule } from './pages/admin/admin.module';
 import { SinglecategoryComponent } from './pages/singlecategory/singlecategory.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { RouteReuseStrategy } from '@angular/router/';
+import { NotfoundComponent } from './pages/notfound/notfound.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +38,7 @@ import { RouteReuseStrategy } from '@angular/router/';
     FooterComponent,
     SingleNewsComponent,
     SinglecategoryComponent,
+    NotfoundComponent,
   ],
   imports: [
     BrowserModule,
