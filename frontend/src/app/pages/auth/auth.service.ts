@@ -28,14 +28,10 @@ export class AuthService {
       );
   }
   register(form: User) {
-    return this.http
-      .post<User>(`${environment.endPoint}/auth/api/signup`, form)
-      .pipe(
-        map((user) => {
-          localStorage.setItem('user', JSON.stringify(user));
-          return user;
-        })
-      );
+    return this.http.post<User>(
+      `${environment.endPoint}/auth/api/signup`,
+      form
+    );
   }
   loadUser() {
     return JSON.parse(localStorage.getItem('user')!);

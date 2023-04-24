@@ -28,6 +28,7 @@ export class LoginComponent {
         this.userData = item;
         if (this.userData !== null) {
           this.success = 'Login successful';
+          localStorage.setItem('user', JSON.stringify(item));
           this.router.navigate(['']);
           this.loading = false;
         }
